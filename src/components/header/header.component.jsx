@@ -1,28 +1,18 @@
 import React from 'react'
-import Cart from '../cart/cart.component'
+import './header.styles.scss'
+import {Link} from 'react-router-dom'
+import {ReactComponent as Logo} from '../../assets/crown.svg'
 
-class Header extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      isEnable : false
-    }
-  }
-
-  viewCart = (prevState) => (
-    this.setState({isEnable : !this.state.isEnable})
-  )
-
-  render() {
-    return(
-      <div className="header">
-        <button onClick={this.viewCart}>Carrinho</button>
-        {
-          this.state.isEnable && <Cart />
-        }
-      </div>
-     
-    )
-  }
-}
+const Header = () => (
+  <div className="header">
+    <Link className="logo-container" to="/">
+      <Logo className="logo"/>
+    </Link>
+    <div className="options">
+      <Link className="option" to="shop">SHOP</Link>
+      <Link className="option" to="contact">CONTACT</Link>
+    </div>
+  </div>
+  
+)
 export default Header
